@@ -176,179 +176,9 @@ sel2
        .duration(0);
   });
 
-
-
-function show93() {
-  document.getElementById("yearInfo").innerHTML = "In 1993, 62 Europe-bound migrants died.";
-  selectYear("linkTo1993")
-
+function updateMap(data) {
   sel = g.selectAll(".squares")
-    .data(data93);
-
-  sel
-    .exit()
-    .remove();
-
-  sel
-    .enter()
-    .append("rect")
-    .attr("class","squares");
-
-  sel
-    .filter(function(d) {return d.origLong != 0})
-    .attr("transform", function(d) {
-                return "translate(" + projection
-              ([
-                  d.origLong,
-                  d.origLat
-                ]) + ")";
-                })
-    .attr("width", 3)
-    .attr("height", 3)
-    .attr('stroke-width', 0)
-    .attr('fill', 'black')
-
-    .on("click", function(d) {
-      originTooltip.transition()
-        .style('opacity', .8)
-        .text(d.origCountry)
-        .style('left', (d3.event.pageX - 50) + 'px')
-        .style('top', (d3.event.pageY - 0) + 'px')
-        .duration(0);
-    })
-
-  sel2 = g.selectAll(".circles")
-    .data(data93.sort(function(a,b){ return b.dead - a.dead}));
-
-  sel2
-    .exit()
-    .remove();
-
-  sel2
-    .enter()
-    .append("circle")
-    .attr("class","circles");
-
-  sel2
-    .attr("transform", function(d) {
-      return "translate(" + projection([
-        d.endLong,
-        d.endLat
-      ]) + ")";
-    })
-     // setting radius based on sqrt of # dead
-    .attr("r", function(d){return Math.sqrt(d.dead)*4; })
-    // changing color based on cause (code folded)
-    .text(function(d){return d.cause; })
-    .style('opacity', .6)
-    .attr('fill', function(d) { return colorMap[d.cause]; })
-    
-    .on("mouseover", function(d) {
-      endTooltip.transition()
-        .style('font-size', 0.55)
-        .style('opacity', .8)
-        .style('background', 'white')
-        .text(d.dead + " died in " + d.endCity + ", " + d.endCountry + ", after " + d.cause + ". They came from " + d.origCountry + ".")
-        .style('left', (d3.event.pageX - 100) + 'px')
-        .style('top', (d3.event.pageY - 30) + 'px')
-        .duration(0);
-    })
-    .on("mouseout",function(d) {
-       endTooltip.transition()
-         .style("opacity", "0")
-         .duration(0);
-    });
-
-};
-
-function show94() {
-  document.getElementById("yearInfo").innerHTML = "In 1994, 125 Europe-bound migrants died.";
-  selectYear("linkTo1994")
-
-  sel = g.selectAll(".squares")
-    .data(data94);
-
-  sel
-    .exit()
-    .remove();
-
-  sel
-    .enter()
-    .append("rect")
-    .attr("class","squares");
-
-  sel
-    .filter(function(d) {return d.origLong != 0})
-    .attr("transform", function(d) {
-                return "translate(" + projection
-              ([
-                  d.origLong,
-                  d.origLat
-                ]) + ")";
-                })
-    .attr("width", 3)
-    .attr("height", 3)
-    .attr('stroke-width', 0)
-    .attr('fill', 'black')
-
-    .on("click", function(d) {
-      originTooltip.transition()
-        .style('opacity', .8)
-        .text(d.origCountry)
-        .style('left', (d3.event.pageX - 50) + 'px')
-        .style('top', (d3.event.pageY - 0) + 'px')
-        .duration(0);
-    })
-
-  sel2 = g.selectAll(".circles")
-    .data(data94.sort(function(a,b){ return b.dead - a.dead}));
-
-  sel2
-    .exit()
-    .remove();
-
-  sel2
-    .enter()
-    .append("circle")
-    .attr("class","circles");
-
-  sel2
-    .attr("transform", function(d) {
-      return "translate(" + projection([
-        d.endLong,
-        d.endLat
-      ]) + ")";
-    })
-     // setting radius based on sqrt of # dead
-    .attr("r", function(d){return Math.sqrt(d.dead)*4; })
-    // changing color based on cause (code folded)
-    .text(function(d){return d.cause; })
-    .style('opacity', .6)
-    .attr('fill', function(d) { return colorMap[d.cause]; })
-    
-    .on("mouseover", function(d) {
-      endTooltip.transition()
-        .style('font-size', 0.55)
-        .style('opacity', .8)
-        .style('background', 'white')
-        .text(d.dead + " died in " + d.endCity + ", " + d.endCountry + ", after " + d.cause + ". They came from " + d.origCountry + ".")
-        .style('left', (d3.event.pageX - 100) + 'px')
-        .style('top', (d3.event.pageY - 30) + 'px')
-        .duration(0);
-    })
-    .on("mouseout",function(d) {
-       endTooltip.transition()
-         .style('opacity', 0)
-         .duration(0);
-    });
-};
-
-function show95() {
-  document.getElementById("yearInfo").innerHTML = "In 1995, 180 Europe-bound migrants died.";
-  selectYear("linkTo1995")
-
-  sel = g.selectAll(".squares")
-    .data(data95);
+    .data(data);
 
   sel
     .exit()
@@ -381,7 +211,7 @@ function show95() {
     })
 
   sel2 = g.selectAll(".circles")
-    .data(data95.sort(function(a,b){ return b.dead - a.dead}));
+    .data(data.sort(function(a,b){ return b.dead - a.dead}));
 
   sel2
     .exit()
@@ -399,7 +229,7 @@ function show95() {
         d.endLat
       ]) + ")";
     })
-     // setting radius based on sqrt of # dead
+    // setting radius based on sqrt of # dead
     .attr("r", function(d){return Math.sqrt(d.dead)*4; })
     // changing color based on cause (code folded)
     .text(function(d){return d.cause; })
@@ -416,91 +246,38 @@ function show95() {
         .duration(0);
     })
     .on("mouseout",function(d) {
-       endTooltip.transition()
-         .style("opacity", "0")
-         .duration(0);
+      endTooltip.transition()
+        .style("opacity", 0)
+        .duration(0);
     });
+  };
+}
+
+function show93() {
+  document.getElementById("yearInfo").innerHTML = "In 1993, 62 Europe-bound migrants died.";
+  selectYear("linkTo1993")
+  updateMap(data93);
+};
+
+function show94() {
+  document.getElementById("yearInfo").innerHTML = "In 1994, 125 Europe-bound migrants died.";
+  selectYear("linkTo1994")
+  updateMap(data94);
+
+};
+
+function show95() {
+  document.getElementById("yearInfo").innerHTML = "In 1995, 180 Europe-bound migrants died.";
+  selectYear("linkTo1995")
+  updateMap(data95);
+
 };
 
 function show96() {
   document.getElementById("yearInfo").innerHTML = "In 1996, 456 Europe-bound migrants died.";
   selectYear("linkTo1996")
+  updateMap(data96);
 
-  sel = g.selectAll(".squares")
-    .data(data96);
-
-  sel
-    .exit()
-    .remove();
-
-  sel
-    .enter()
-    .append("rect")
-    .attr("class","squares");
-
-  sel
-    .filter(function(d) {return d.origLong != 0})
-    .attr("transform", function(d) {
-                return "translate(" + projection
-              ([
-                  d.origLong,
-                  d.origLat
-                ]) + ")";
-                })
-    .attr("width", 3)
-    .attr("height", 3)
-    .attr('stroke-width', 0)
-    .attr('fill', 'black')
-    .on("click", function(d) {
-      originTooltip.transition()
-        .style('opacity', .8)
-        .text(d.origCountry)
-        .style('left', (d3.event.pageX - 50) + 'px')
-        .style('top', (d3.event.pageY - 0) + 'px')
-        .duration(0);
-    })
-
-  sel2 = g.selectAll(".circles")
-    .data(data96.sort(function(a,b){ return b.dead - a.dead}));
-
-  sel2
-    .exit()
-    .remove();
-
-  sel2
-    .enter()
-    .append("circle")
-    .attr("class","circles");
-
-  sel2
-    .attr("transform", function(d) {
-      return "translate(" + projection([
-        d.endLong,
-        d.endLat
-      ]) + ")";
-    })
-     // setting radius based on sqrt of # dead
-    .attr("r", function(d){return Math.sqrt(d.dead)*4; })
-    // changing color based on cause (code folded)
-    .text(function(d){return d.cause; })
-    .style('opacity', .6)
-    .attr('fill', function(d) { return colorMap[d.cause]; })
-    
-    .on("mouseover", function(d) {
-      endTooltip.transition()
-        .style('font-size', 0.55)
-        .style('opacity', .8)
-        .style('background', 'white')
-        .text(d.dead + " died in " + d.endCity + ", " + d.endCountry + ", after " + d.cause + ". They came from " + d.origCountry + ".")
-        .style('left', (d3.event.pageX - 100) + 'px')
-        .style('top', (d3.event.pageY - 30) + 'px')
-        .duration(0);
-    })
-    .on("mouseout",function(d) {
-       endTooltip.transition()
-         .style('opacity', 0)
-         .duration(0);
-    });
 };
 
 function selectYear(id) {
