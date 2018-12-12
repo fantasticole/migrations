@@ -76,6 +76,30 @@ var data96 =[
 
 // data97 array (INSERT AND FOLD)
 
+var colorMap = {
+  "asphyxiation": "#b07aa0",
+  "suffocation": "#b07aa0",
+  "a beating": "#f18e27",
+  "a shooting": "#f18e27",
+  "a stabbing": "#f18e27",
+  "dehydration": "#8eca7d",
+  "starvation": "#8eca7d";,
+  "drowning": "#4e79a7",
+  "a fall": "#f8bfd1";,
+  "a jump": "#f8bfd1";,
+  "a fire": "#f1ce63",
+  "hit by a vehicle": "#79706e",
+  "a vehicle accident": "#79706e",
+  "hypothermia": "#9fcae7",
+  "medical neglect": "#408b75",
+  "illness": "#408b75",
+  "a mine blast": "#b5982f",
+  "suicide": "#e05759",
+  "an unknown cause": "#bab0ac",
+  "poisoning": "#bab0ac",
+  "other": "#bab0ac",
+}
+
 //origin rectangles: setting variables
 var sel = g.selectAll("origSquares")
 .data(data93);
@@ -91,24 +115,23 @@ sel
 
 sel
 .attr("transform", function(d) {
-              return "translate(" + projection
-            ([
-                d.origLong,
-                d.origLat
-              ]) + ")";
-              })
+  return "translate(" + projection([
+    d.origLong,
+    d.origLat
+  ]) + ")";
+})
 .attr("width", 3)
 .attr("height", 3)
 .attr('stroke-width', 0)
 .attr('fill', 'black')
 .on("click", function(d) {
-                originTooltip.transition()
-                  .style('opacity', .8)
-                  .text(d.origCountry)
-                  .style('left', (d3.event.pageX - 50) + 'px')
-                  .style('top', (d3.event.pageY - 0) + 'px')
-                  .duration(0);
-              })
+  originTooltip.transition()
+    .style('opacity', .8)
+    .text(d.origCountry)
+    .style('left', (d3.event.pageX - 50) + 'px')
+    .style('top', (d3.event.pageY - 0) + 'px')
+    .duration(0);
+})
 
 //end circles: setting variables
 var sel2 = g.selectAll("endCircles")
@@ -125,78 +148,33 @@ sel2
 
 sel2
 .attr("transform", function(d) {
-    return "translate(" + projection
-  ([
-      d.endLong,
-      d.endLat
-    ]) + ")";
-    })
-     // setting radius based on sqrt of # dead
-    .attr("r", function(d){return Math.sqrt(d.dead)*4; })
-    // changing color based on cause (code folded)
-    .text(function(d){return d.cause; })
-    .style('opacity', .6)
-    .attr('fill', function(d) {
-        if(d.cause === "asphyxiation") {
-            return "#b07aa0";
-        } else if (d.cause === "suffocation") {
-            return "#b07aa0";
-        } else if (d.cause === "a beating") {
-            return "#f18e27";
-        } else if (d.cause === "a shooting") {
-            return "#f18e27";
-        } else if (d.cause === "a stabbing") {
-            return "#f18e27";
-        } else if (d.cause === "dehydration") {
-            return "#8eca7d";
-        } else if (d.cause === "starvation") {
-            return "#8eca7d"; 
-        } else if (d.cause === "drowning") {
-            return "#4e79a7";
-        } else if (d.cause === "a fall") {
-            return "#f8bfd1"; 
-        } else if (d.cause === "a jump") {
-            return "#f8bfd1"; 
-        } else if (d.cause === "a fire") {
-            return "#f1ce63";
-        } else if (d.cause === "hit by a vehicle") {
-            return "#79706e";
-        } else if (d.cause === "a vehicle accident") {
-            return "#79706e";
-        } else if (d.cause === "hypothermia") {
-            return "#9fcae7";
-        } else if (d.cause === "medical neglect") {
-            return "#408b75";
-        } else if (d.cause === "illness") {
-            return "#408b75";
-        } else if (d.cause === "a mine blast") {
-            return "#b5982f";
-        } else if (d.cause === "suicide") {
-            return "#e05759";
-        } else if (d.cause === "an unknown cause") {
-            return "#bab0ac";
-        } else if (d.cause === "poisoning") {
-            return "#bab0ac";
-        } else if (d.cause === "other") {
-            return "#bab0ac";
-        }
-        })
-    
-    .on("mouseover", function(d) {
-      endTooltip.transition()
-        .style('font-size', 0.55)
-        .style('opacity', .8)
-        .style('background', 'white')
-        .text(d.dead + " died in " + d.endCity + ", " + d.endCountry + ", after " + d.cause + ". They came from " + d.origCountry + ".")
-        .style('left', (d3.event.pageX - 100) + 'px')
-        .style('top', (d3.event.pageY - 30) + 'px')
-        .duration(0);
-    })
-    .on("mouseout",function(d) {
-       endTooltip.transition()
-         .style("opacity", "0")
-         .duration(0);
-    });
+  return "translate(" + projection([
+    d.endLong,
+    d.endLat
+  ]) + ")";
+  })
+   // setting radius based on sqrt of # dead
+  .attr("r", function(d){return Math.sqrt(d.dead)*4; })
+  // changing color based on cause (code folded)
+  .text(function(d){return d.cause; })
+  .style('opacity', .6)
+  .attr('fill', function(d) { return colorMap[d.cause]; })
+  
+  .on("mouseover", function(d) {
+    endTooltip.transition()
+      .style('font-size', 0.55)
+      .style('opacity', .8)
+      .style('background', 'white')
+      .text(d.dead + " died in " + d.endCity + ", " + d.endCountry + ", after " + d.cause + ". They came from " + d.origCountry + ".")
+      .style('left', (d3.event.pageX - 100) + 'px')
+      .style('top', (d3.event.pageY - 30) + 'px')
+      .duration(0);
+  })
+  .on("mouseout",function(d) {
+     endTooltip.transition()
+       .style("opacity", "0")
+       .duration(0);
+  });
 
 
 
@@ -277,78 +255,33 @@ function show93() {
 
   sel2
     .attr("transform", function(d) {
-      return "translate(" + projection
-    ([
+      return "translate(" + projection([
         d.endLong,
         d.endLat
       ]) + ")";
-      })
-       // setting radius based on sqrt of # dead
-      .attr("r", function(d){return Math.sqrt(d.dead)*4; })
-      // changing color based on cause (code folded)
-      .text(function(d){return d.cause; })
-      .style('opacity', .6)
-      .attr('fill', function(d) {
-          if(d.cause === "asphyxiation") {
-              return "#b07aa0";
-          } else if (d.cause === "suffocation") {
-              return "#b07aa0";
-          } else if (d.cause === "a beating") {
-              return "#f18e27";
-          } else if (d.cause === "a shooting") {
-              return "#f18e27";
-          } else if (d.cause === "a stabbing") {
-              return "#f18e27";
-          } else if (d.cause === "dehydration") {
-              return "#8eca7d";
-          } else if (d.cause === "starvation") {
-              return "#8eca7d"; 
-          } else if (d.cause === "drowning") {
-              return "#4e79a7";
-          } else if (d.cause === "a fall") {
-              return "#f8bfd1"; 
-          } else if (d.cause === "a jump") {
-              return "#f8bfd1"; 
-          } else if (d.cause === "a fire") {
-              return "#f1ce63";
-          } else if (d.cause === "hit by a vehicle") {
-              return "#79706e";
-          } else if (d.cause === "a vehicle accident") {
-              return "#79706e";
-          } else if (d.cause === "hypothermia") {
-              return "#9fcae7";
-          } else if (d.cause === "medical neglect") {
-              return "#408b75";
-          } else if (d.cause === "illness") {
-              return "#408b75";
-          } else if (d.cause === "a mine blast") {
-              return "#b5982f";
-          } else if (d.cause === "suicide") {
-              return "#e05759";
-          } else if (d.cause === "an unknown cause") {
-              return "#bab0ac";
-          } else if (d.cause === "poisoning") {
-              return "#bab0ac";
-          } else if (d.cause === "other") {
-              return "#bab0ac";
-          }
-          })
-      
-      .on("mouseover", function(d) {
-        endTooltip.transition()
-          .style('font-size', 0.55)
-          .style('opacity', .8)
-          .style('background', 'white')
-          .text(d.dead + " died in " + d.endCity + ", " + d.endCountry + ", after " + d.cause + ". They came from " + d.origCountry + ".")
-          .style('left', (d3.event.pageX - 100) + 'px')
-          .style('top', (d3.event.pageY - 30) + 'px')
-          .duration(0);
-      })
-      .on("mouseout",function(d) {
-         endTooltip.transition()
-           .style("opacity", "0")
-           .duration(0);
-      });
+    })
+     // setting radius based on sqrt of # dead
+    .attr("r", function(d){return Math.sqrt(d.dead)*4; })
+    // changing color based on cause (code folded)
+    .text(function(d){return d.cause; })
+    .style('opacity', .6)
+    .attr('fill', function(d) { return colorMap[d.cause]; })
+    
+    .on("mouseover", function(d) {
+      endTooltip.transition()
+        .style('font-size', 0.55)
+        .style('opacity', .8)
+        .style('background', 'white')
+        .text(d.dead + " died in " + d.endCity + ", " + d.endCountry + ", after " + d.cause + ". They came from " + d.origCountry + ".")
+        .style('left', (d3.event.pageX - 100) + 'px')
+        .style('top', (d3.event.pageY - 30) + 'px')
+        .duration(0);
+    })
+    .on("mouseout",function(d) {
+       endTooltip.transition()
+         .style("opacity", "0")
+         .duration(0);
+    });
 
 };
 
@@ -439,51 +372,7 @@ function show94() {
     // changing color based on cause (code folded)
     .text(function(d){return d.cause; })
     .style('opacity', .6)
-    .attr('fill', function(d) {
-        if(d.cause === "asphyxiation") {
-            return "#b07aa0";
-        } else if (d.cause === "suffocation") {
-            return "#b07aa0";
-        } else if (d.cause === "a beating") {
-            return "#f18e27";
-        } else if (d.cause === "a shooting") {
-            return "#f18e27";
-        } else if (d.cause === "a stabbing") {
-            return "#f18e27";
-        } else if (d.cause === "dehydration") {
-            return "#8eca7d";
-        } else if (d.cause === "starvation") {
-            return "#8eca7d"; 
-        } else if (d.cause === "drowning") {
-            return "#4e79a7";
-        } else if (d.cause === "a fall") {
-            return "#f8bfd1"; 
-        } else if (d.cause === "a jump") {
-            return "#f8bfd1"; 
-        } else if (d.cause === "a fire") {
-            return "#f1ce63";
-        } else if (d.cause === "hit by a vehicle") {
-            return "#79706e";
-        } else if (d.cause === "a vehicle accident") {
-            return "#79706e";
-        } else if (d.cause === "hypothermia") {
-            return "#9fcae7";
-        } else if (d.cause === "medical neglect") {
-            return "#408b75";
-        } else if (d.cause === "illness") {
-            return "#408b75";
-        } else if (d.cause === "a mine blast") {
-            return "#b5982f";
-        } else if (d.cause === "suicide") {
-            return "#e05759";
-        } else if (d.cause === "an unknown cause") {
-            return "#bab0ac";
-        } else if (d.cause === "poisoning") {
-            return "#bab0ac";
-        } else if (d.cause === "other") {
-            return "#bab0ac";
-        }
-        })
+    .attr('fill', function(d) { return colorMap[d.cause]; })
     
     .on("mouseover", function(d) {
       endTooltip.transition()
@@ -588,51 +477,7 @@ function show95() {
     // changing color based on cause (code folded)
     .text(function(d){return d.cause; })
     .style('opacity', .6)
-    .attr('fill', function(d) {
-        if(d.cause === "asphyxiation") {
-            return "#b07aa0";
-        } else if (d.cause === "suffocation") {
-            return "#b07aa0";
-        } else if (d.cause === "a beating") {
-            return "#f18e27";
-        } else if (d.cause === "a shooting") {
-            return "#f18e27";
-        } else if (d.cause === "a stabbing") {
-            return "#f18e27";
-        } else if (d.cause === "dehydration") {
-            return "#8eca7d";
-        } else if (d.cause === "starvation") {
-            return "#8eca7d"; 
-        } else if (d.cause === "drowning") {
-            return "#4e79a7";
-        } else if (d.cause === "a fall") {
-            return "#f8bfd1"; 
-        } else if (d.cause === "a jump") {
-            return "#f8bfd1"; 
-        } else if (d.cause === "a fire") {
-            return "#f1ce63";
-        } else if (d.cause === "hit by a vehicle") {
-            return "#79706e";
-        } else if (d.cause === "a vehicle accident") {
-            return "#79706e";
-        } else if (d.cause === "hypothermia") {
-            return "#9fcae7";
-        } else if (d.cause === "medical neglect") {
-            return "#408b75";
-        } else if (d.cause === "illness") {
-            return "#408b75";
-        } else if (d.cause === "a mine blast") {
-            return "#b5982f";
-        } else if (d.cause === "suicide") {
-            return "#e05759";
-        } else if (d.cause === "an unknown cause") {
-            return "#bab0ac";
-        } else if (d.cause === "poisoning") {
-            return "#bab0ac";
-        } else if (d.cause === "other") {
-            return "#bab0ac";
-        }
-    })
+    .attr('fill', function(d) { return colorMap[d.cause]; })
     .on("mouseover", function(d) {
       endTooltip.transition()
         .style('font-size', 0.55)
@@ -726,79 +571,34 @@ function show96() {
 
   sel2
     .attr("transform", function(d) {
-      return "translate(" + projection
-    ([
+      return "translate(" + projection([
         d.endLong,
         d.endLat
       ]) + ")";
-      })
-       // setting radius based on sqrt of # dead
-      .attr("r", function(d){return Math.sqrt(d.dead)*4; })
-      // changing color based on cause (code folded)
-      .text(function(d){return d.cause; })
-      .style('opacity', .6)
-      .attr('fill', function(d) {
-          if(d.cause === "asphyxiation") {
-              return "#b07aa0";
-          } else if (d.cause === "suffocation") {
-              return "#b07aa0";
-          } else if (d.cause === "a beating") {
-              return "#f18e27";
-          } else if (d.cause === "a shooting") {
-              return "#f18e27";
-          } else if (d.cause === "a stabbing") {
-              return "#f18e27";
-          } else if (d.cause === "dehydration") {
-              return "#8eca7d";
-          } else if (d.cause === "starvation") {
-              return "#8eca7d"; 
-          } else if (d.cause === "drowning") {
-              return "#4e79a7";
-          } else if (d.cause === "a fall") {
-              return "#f8bfd1"; 
-          } else if (d.cause === "a jump") {
-              return "#f8bfd1"; 
-          } else if (d.cause === "a fire") {
-              return "#f1ce63";
-          } else if (d.cause === "hit by a vehicle") {
-              return "#79706e";
-          } else if (d.cause === "a vehicle accident") {
-              return "#79706e";
-          } else if (d.cause === "hypothermia") {
-              return "#9fcae7";
-          } else if (d.cause === "medical neglect") {
-              return "#408b75";
-          } else if (d.cause === "illness") {
-              return "#408b75";
-          } else if (d.cause === "a mine blast") {
-              return "#b5982f";
-          } else if (d.cause === "suicide") {
-              return "#e05759";
-          } else if (d.cause === "an unknown cause") {
-              return "#bab0ac";
-          } else if (d.cause === "poisoning") {
-              return "#bab0ac";
-          } else if (d.cause === "other") {
-              return "#bab0ac";
-          }
-          })
-      
-      .on("mouseover", function(d) {
-        endTooltip.transition()
-          .style('font-size', 0.55)
-          .style('opacity', .8)
-          .style('display', "block")
-          .style('background', 'white')
-          .text(d.dead + " died in " + d.endCity + ", " + d.endCountry + ", after " + d.cause + ". They came from " + d.origCountry + ".")
-          .style('left', (d3.event.pageX - 100) + 'px')
-          .style('top', (d3.event.pageY - 30) + 'px')
-          .duration(0);
-      })
-      .on("mouseout",function(d) {
-         endTooltip.transition()
-           .style('display', "none")
-           .duration(0);
-      });
+    })
+     // setting radius based on sqrt of # dead
+    .attr("r", function(d){return Math.sqrt(d.dead)*4; })
+    // changing color based on cause (code folded)
+    .text(function(d){return d.cause; })
+    .style('opacity', .6)
+    .attr('fill', function(d) { return colorMap[d.cause]; })
+    
+    .on("mouseover", function(d) {
+      endTooltip.transition()
+        .style('font-size', 0.55)
+        .style('opacity', .8)
+        .style('display', "block")
+        .style('background', 'white')
+        .text(d.dead + " died in " + d.endCity + ", " + d.endCountry + ", after " + d.cause + ". They came from " + d.origCountry + ".")
+        .style('left', (d3.event.pageX - 100) + 'px')
+        .style('top', (d3.event.pageY - 30) + 'px')
+        .duration(0);
+    })
+    .on("mouseout",function(d) {
+       endTooltip.transition()
+         .style('display', "none")
+         .duration(0);
+    });
 };
 
 function show97() {
