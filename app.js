@@ -180,31 +180,7 @@ sel2
 
 function show93() {
   document.getElementById("yearInfo").innerHTML = "In 1993, 62 Europe-bound migrants died.";
-  document.getElementById("linkTo1993").className = "yearSelected";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo1993")
 
   sel = g.selectAll(".squares")
     .data(data93);
@@ -287,31 +263,7 @@ function show93() {
 
 function show94() {
   document.getElementById("yearInfo").innerHTML = "In 1994, 125 Europe-bound migrants died.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "yearSelected";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo1994")
 
   sel = g.selectAll(".squares")
     .data(data94);
@@ -394,31 +346,7 @@ function show94() {
 
 function show95() {
   document.getElementById("yearInfo").innerHTML = "In 1995, 180 Europe-bound migrants died.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "yearSelected";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo1995")
 
   sel = g.selectAll(".squares")
     .data(data95);
@@ -497,31 +425,7 @@ function show95() {
 
 function show96() {
   document.getElementById("yearInfo").innerHTML = "In 1996, 456 Europe-bound migrants died.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "yearSelected";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo1996")
 
   sel = g.selectAll(".squares")
     .data(data96);
@@ -601,593 +505,99 @@ function show96() {
     });
 };
 
+function selectYear(id) {
+  var active = document.querySelectorAll(".yearLink.yearSelected");
+
+  active.forEach(function(link) {
+    link.classList.remove("yearSelected");
+  })
+
+  document.getElementById(id).classList.add("yearSelected");
+}
+
 function show97() {
   document.getElementById("yearInfo").innerHTML = "In 1997, 384 Europe-bound migrants died. MAP DATA PENDING.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "yearSelected";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo1997")
 }
 function show98() {
   document.getElementById("yearInfo").innerHTML = "In 1998, 389 Europe-bound migrants died. MAP DATA PENDING.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "yearSelected";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo1998")
 }
 function show99() {
   document.getElementById("yearInfo").innerHTML = "In 1999, 523 Europe-bound migrants died. MAP DATA PENDING.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "yearSelected";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo1999")
 }
 function show00() {
   document.getElementById("yearInfo").innerHTML = "In 2000, 825 Europe-bound migrants died. MAP DATA PENDING.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "yearSelected";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo2000")
 }
 function show01() {
   document.getElementById("yearInfo").innerHTML = "In 2001, 511 Europe-bound migrants died. MAP DATA PENDING.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "yearSelected";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo2001")
 }
 function show02() {
   document.getElementById("yearInfo").innerHTML = "In 2002, 721 Europe-bound migrants died. MAP DATA PENDING.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "yearSelected";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo2002")
 }
 function show03() {
   document.getElementById("yearInfo").innerHTML = "In 2003, 1,360 Europe-bound migrants died. MAP DATA PENDING.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "yearSelected";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo2003")
 }
 function show04() {
   document.getElementById("yearInfo").innerHTML = "In 2004, 908 Europe-bound migrants died. MAP DATA PENDING.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "yearSelected";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo2004")
 }
 function show05() {
   document.getElementById("yearInfo").innerHTML = "In 2005, 1,087 Europe-bound migrants died. MAP DATA PENDING.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "yearSelected";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo2005")
 }
 function show06() {
   document.getElementById("yearInfo").innerHTML = "In 2006, 1,891 Europe-bound migrants died. MAP DATA PENDING.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "yearSelected";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo2006")
 }
 function show07() {
   document.getElementById("yearInfo").innerHTML = "In 2007, 1,672 Europe-bound migrants died. MAP DATA PENDING.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "yearSelected";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo2007")
 }
 function show08() {
   document.getElementById("yearInfo").innerHTML = "In 2008, 1,180 Europe-bound migrants died. MAP DATA PENDING.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "yearSelected";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo2008")
 }
 function show09() {
   document.getElementById("yearInfo").innerHTML = "In 2009, 1,233 Europe-bound migrants died. MAP DATA PENDING.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "yearSelected";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo2009")
 }
 function show10() {
   document.getElementById("yearInfo").innerHTML = "In 2010, 302 Europe-bound migrants died. MAP DATA PENDING.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "yearSelected";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo2010")
 }
 function show11() {
   document.getElementById("yearInfo").innerHTML = "In 2011, 1,977 Europe-bound migrants died. MAP DATA PENDING.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "yearSelected";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo2011")
 }
 function show12() {
   document.getElementById("yearInfo").innerHTML = "In 2012, 741 Europe-bound migrants died. MAP DATA PENDING.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "yearSelected";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo2012")
 }
 function show13() {
   document.getElementById("yearInfo").innerHTML = "In 2013, 957 Europe-bound migrants died. MAP DATA PENDING.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "yearSelected";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo2013")
 }
 function show14() {
   document.getElementById("yearInfo").innerHTML = "In 2014, 2,685 Europe-bound migrants died. MAP DATA PENDING.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "yearSelected";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo2014")
 }
 function show15() {
   document.getElementById("yearInfo").innerHTML = "In 2015, 3,139 Europe-bound migrants died. MAP DATA PENDING.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "yearSelected";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo2015")
 }
 function show16() {
   document.getElementById("yearInfo").innerHTML = "In 2016, 3,962 Europe-bound migrants died. MAP DATA PENDING.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "yearSelected";
-  document.getElementById("linkTo2017").className = "";
+  selectYear("linkTo2016")
 }
 function show17() {
   document.getElementById("yearInfo").innerHTML = "In 2017, 3,853 Europe-bound migrants died. MAP DATA PENDING.";
-  document.getElementById("linkTo1993").className = "";
-  document.getElementById("linkTo1994").className = "";
-  document.getElementById("linkTo1995").className = "";
-  document.getElementById("linkTo1996").className = "";
-  document.getElementById("linkTo1997").className = "";
-  document.getElementById("linkTo1998").className = "";
-  document.getElementById("linkTo1999").className = "";
-  document.getElementById("linkTo2000").className = "";
-  document.getElementById("linkTo2001").className = "";
-  document.getElementById("linkTo2002").className = "";
-  document.getElementById("linkTo2003").className = "";
-  document.getElementById("linkTo2004").className = "";
-  document.getElementById("linkTo2005").className = "";
-  document.getElementById("linkTo2006").className = "";
-  document.getElementById("linkTo2007").className = "";
-  document.getElementById("linkTo2008").className = "";
-  document.getElementById("linkTo2009").className = "";
-  document.getElementById("linkTo2010").className = "";
-  document.getElementById("linkTo2011").className = "";
-  document.getElementById("linkTo2012").className = "";
-  document.getElementById("linkTo2013").className = "";
-  document.getElementById("linkTo2014").className = "";
-  document.getElementById("linkTo2015").className = "";
-  document.getElementById("linkTo2016").className = "";
-  document.getElementById("linkTo2017").className = "yearSelected";
+  selectYear("linkTo2017")
 }
 
 show96();
