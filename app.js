@@ -250,8 +250,7 @@ function updateMap(data) {
         .style("opacity", 0)
         .duration(0);
     });
-  };
-}
+};
 
 function show93() {
   document.getElementById("yearInfo").innerHTML = "In 1993, 62 Europe-bound migrants died.";
