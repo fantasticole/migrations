@@ -329,7 +329,6 @@ function show94() {
     .on("mouseover", function(d) {
       endTooltip.transition()
         .style('font-size', 0.55)
-        .style('display', "block")
         .style('opacity', .8)
         .style('background', 'white')
         .text(d.dead + " died in " + d.endCity + ", " + d.endCountry + ", after " + d.cause + ". They came from " + d.origCountry + ".")
@@ -339,7 +338,7 @@ function show94() {
     })
     .on("mouseout",function(d) {
        endTooltip.transition()
-          .style('display', "none")
+         .style('opacity', 0)
          .duration(0);
     });
 };
@@ -491,7 +490,6 @@ function show96() {
       endTooltip.transition()
         .style('font-size', 0.55)
         .style('opacity', .8)
-        .style('display', "block")
         .style('background', 'white')
         .text(d.dead + " died in " + d.endCity + ", " + d.endCountry + ", after " + d.cause + ". They came from " + d.origCountry + ".")
         .style('left', (d3.event.pageX - 100) + 'px')
@@ -500,7 +498,7 @@ function show96() {
     })
     .on("mouseout",function(d) {
        endTooltip.transition()
-         .style('display', "none")
+         .style('opacity', 0)
          .duration(0);
     });
 };
