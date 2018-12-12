@@ -1,0 +1,75 @@
+body {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px
+}
+
+a {
+  color: #777;
+}
+
+span {
+  display: inline-block;
+}
+
+circle {
+    stroke: white;
+    stroke-width: .5;
+}
+
+circle:hover {
+    stroke: black;
+    stroke-width: .5;
+}
+
+/*color of the water*/ 
+svg {
+  background: #e0ebf5;
+ }
+
+/*nav styling*/
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #efefef;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.sidenav p {
+    padding: 0px 16px 0px 16px;
+    text-decoration: none;
+    font-size: 13.25px;
+    color: black;
+    display: block;
+    transition: 0.3s;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 10px 0px 0px 0px;
+    font-size:20px;
+}
+
+#yearInfo {
+    padding:10px 0px 0px 42px;
+    font-size:14px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 20px;}
+}
+
+#yearLinks {
+  cursor:pointer;
+  padding: 0px 0px 0px 10px;
+  font-size:14px;
+  }
+
+.yearSelected {
+    color: #cc0000;
+}
