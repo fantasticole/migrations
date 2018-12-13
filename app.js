@@ -177,6 +177,7 @@ sel2
   });
 
 function updateMap(data) {
+  console.log({ data })
   sel = g.selectAll(".squares")
     .data(data);
 
@@ -197,11 +198,18 @@ function updateMap(data) {
         d.origLat
       ]) + ")";
     })
-    .attr("width", 3)
-    .attr("height", 3)
+    // .attr("width", 3)
+    // .attr("height", 3)
+    .attr("width", 30)
+    .attr("height", 30)
     .attr('stroke-width', 0)
     .attr('fill', 'black')
     .on("click", function(d) {
+      var migrantsWithSameOrigin = data.filter(function(migrant) {
+        return migrant.origCountry === d.origCountry;
+      });
+      console.log({ d })
+      console.log({ migrantsWithSameOrigin })
       originTooltip.transition()
         .style('opacity', .8)
         .text(d.origCountry)
