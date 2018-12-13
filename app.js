@@ -373,5 +373,3 @@ function show17() {
   document.getElementById("yearInfo").innerHTML = "In 2017, 3,853 Europe-bound migrants died. MAP DATA PENDING.";
   selectYear("linkTo2017")
 }
-
-show96();
