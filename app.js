@@ -20,24 +20,9 @@ var projection = d3.geoMercator()
                    .center([15, 27])
                    .translate([width/2, height/2]);
 
-// var svg = d3.select("svg"),
-//     width = +svg.attr("width"),
-//     height = +svg.attr("height");
-
-// var projection = d3.geoAlbers()
-//     .translate([width / 2, height / 2])
-//     .scale(1280);
-
-var path = d3.geoPath()
-              .projection(projection)
-              .pointRadius(2.5);
-
 var geoPath = d3.geoPath()
                 .projection(projection)
                 .pointRadius(2.5);
-
-// var voronoi = d3.voronoi()
-//     .extent([[-1, -1], [width + 1, height + 1]]);
 
 g.selectAll('path')
   .data(worldmap_json.features)
@@ -222,7 +207,7 @@ function updateMap(data) {
   svg.append("path")
     .datum({type: "MultiPoint", coordinates: locations})
     .attr("class", "migration-spots")
-    .attr("d", path);
+    .attr("d", geoPath);
 
   sel = g.selectAll(".squares")
     .data(data);
@@ -251,28 +236,22 @@ function updateMap(data) {
     .attr('stroke-width', 0)
     .attr('fill', 'black')
     .on("click", function(d) {
-      // var dataByOriginCountry = d3.map(data, function(d) { return d.origCountry; });
       var migrantsWithSameOrigin = data.filter(function(migrant) {
         return migrant.origCountry === d.origCountry;
       });
       console.log({ d })
-      // console.log({ dataByOriginCountry })
       console.log({ migrantsWithSameOrigin })
       // Following along from https://stackoverflow.com/questions/39982729/drawing-connecting-lines-great-arcs-on-a-d3-symbol-map/39988387
       //
       // While reading in the migration information create empty MultiLineString objects for every origin and destination:
       var oSource = dataByCoords.get(`${d.origLong}, ${d.origLat}`);
       var oTarget = dataByCoords.get(`${d.endLong}, ${d.endLat}`);
-      console.log({ oSource })
-      console.log({ oTarget })
       oSource.arcs.coordinates.push([oSource, oTarget]);
       oTarget.arcs.coordinates.push([oTarget, oSource]);
 
       migrantsWithSameOrigin.forEach(function(path) {
         var eSource = dataByCoords.get(`${path.origLong}, ${path.origLat}`);
         var eTarget = dataByCoords.get(`${path.endLong}, ${path.endLat}`);
-        console.log({ eSource })
-        console.log({ eTarget })
         eSource.arcs.coordinates.push([eSource, eTarget]);
         eTarget.arcs.coordinates.push([eTarget, eSource]);
       })
@@ -284,7 +263,7 @@ function updateMap(data) {
       svg.append("path")
         .datum({type: "MultiPoint", coordinates: locs})
         .attr("class", "migration-dots")
-        .attr("d", path);
+        .attr("d", geoPath);
 
       var loc = svg.selectAll(".migration")
         .data(locs)
@@ -293,140 +272,7 @@ function updateMap(data) {
 
       loc.append("path")
         .attr("class", "migration-arc")
-        .attr("d", function(d) { return path(d.arcs); });
-
-      // flights.forEach(function(flight) {
-      //   var source = airportByIata.get(flight.origin),
-      //       target = airportByIata.get(flight.destination);
-      //   source.arcs.coordinates.push([source, target]);
-      //   target.arcs.coordinates.push([target, source]);
-      // });
-
-      // var points = [];
-      // points.push({
-      //   0: +d.origLong,
-      //   1: +d.origLat,
-      //   arcs: {
-      //     type: "MultiLineString",
-      //     coordinates: []
-      //   },
-      // })
-      // migrantsWithSameOrigin.forEach(function(path) {
-      //   points.push({
-      //     0: +path.endLong,
-      //     1: +path.endLat,
-      //     arcs: {
-      //       type: "MultiLineString",
-      //       coordinates: []
-      //     },
-      //   })
-      // })
-      // console.log({ points })
-
-      // svg.append("path")
-      //   .datum({type: "MultiPoint", coordinates: airports})
-      //   .attr("class", "airport-dots")
-      //   .attr("d", path);
-
-      // svg.append("path")
-      //   .datum({type: "MultiPoint", coordinates: points})
-      //   .attr("class", "migration-dots")
-      //   .attr("d", geoPath);
-
-      // // var airport = svg.selectAll(".airport")
-      // //                   .data(airports)
-      // //                   .enter().append("g")
-      // //                     .attr("class", "airport");
-
-      // var allLocations = svg.selectAll(".squares, .circles")
-      //                   .data(points)
-      //                   .enter().append("g")
-      //                     .attr("class", "migration");
-
-      // console.log({ allLocations })
-
-      // airport.append("title")
-      //   .text(function(d) { return d.iata + "\n" + d.arcs.coordinates.length + " flights"; });
-
-      // airport.append("path")
-      //   .attr("class", "airport-arc")
-      //   .attr("d", function(d) { return path(d.arcs); });
-
-      // airport.append("path")
-      //   .data(voronoi.polygons(airports.map(projection)))
-      //   .attr("class", "airport-cell")
-      //   .attr("d", function(d) { return d ? "M" + d.join("L") + "Z" : null; });
-
-      // allLocations.append("title")
-      //   .text(function(d) { return d.iata + "\n" + d.arcs.coordinates.length + " flights"; });
-
-      // allLocations.append("path")
-      //   .attr("class", "migration-arc")
-      //   .attr("d", function(d) {
-      //     console.log({ d })
-      //     return geoPath(d.arcs);
-      //   });
-
-      // allLocations.append("path")
-      //   .data(voronoi.polygons(points.map(projection)))
-      //   .attr("class", "migration-cell")
-      //   .attr("d", function(d) { return d ? "M" + d.join("L") + "Z" : null; });
-
-
-
-      // migrantsWithSameOrigin.forEach(function(m) {
-      //   var source = countries[m.origCountry];
-      //   var target = countries[m.endCountry];
-      //   console.log({ "m.origCountry": m.origCountry })
-      //   console.log({ "m.endCountry": m.endCountry })
-      //   console.log({ source });
-      //   console.log({ target });
-      //   source.arcs.coordinates.push([source, target]);
-      //   target.arcs.coordinates.push([target, source]);
-      //   // var origin = [+m.origLong, +m.origLat]
-      //   // var end = [+m.endLong, +m.endLat]
-      //   // // m[0] = +m.endLong;
-      //   // // m[1] = +m.endLat;
-      //   // // m.arcs = {type: "MultiLineString", coordinates: []};
-      //   // origin.arcs = {type: "MultiLineString", coordinates: []};
-      //   // end.arcs = {type: "MultiLineString", coordinates: []};
-      //   // locations.push(origin);
-      //   // locations.push(end);
-      // })
-      // console.log({ countries })
-
-      // flights.forEach(function(flight) {
-      //   var source = airportByIata.get(flight.origin),
-      //       target = airportByIata.get(flight.destination);
-      //   source.arcs.coordinates.push([source, target]);
-      //   target.arcs.coordinates.push([target, source]);
-      // });
-
-      // function typeAirport(d) {
-      //   d[0] = +d.longitude;
-      //   d[1] = +d.latitude;
-      //   d.arcs = {type: "MultiLineString", coordinates: []};
-      //   return d;
-      // }
-  
-
-      // endLat: "35.888361"
-      // endLong: "-5.304138"
-      // origCountry: "Maghreb"
-      // origLat: "33.38367245"
-      // origLong: "44.37339343"
-      
-      // var dataByOrigin = d3.map(data, function(d) { return d.origCountry; });
-      // console.log({ dataByOrigin })
-
-      // migrantsWithSameOrigin.forEach(function(m) {
-      // //   // var origin = [m.origLat, m.origLong];
-      // //   // var dest = [m.endLat, m.endLong];
-      //   var source = dataByOrigin.get(m.origCountry),
-      //       target = dataByOrigin.get(m.endCountry);
-      //   source.arcs.coordinates.push([source, target]);
-      //   target.arcs.coordinates.push([target, source]);
-      // });
+        .attr("d", function(d) { return geoPath(d.arcs); });
 
       originTooltip.transition()
         .style('opacity', .8)
