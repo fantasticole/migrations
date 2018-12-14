@@ -115,3 +115,15 @@ svg {
 .tooltip {
   pointer-events: none;
 }
+
+.migration-arc {
+  fill: none;
+}
+
+.migration .migration-arc {
+  stroke: #f00;
+}
+
+.migration-spots {
+  fill: none;
+}
