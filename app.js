@@ -1,27 +1,27 @@
 //all unchanging parts of d3 setup (code folded)
 // setting map dimensions/margins
-  var margin = { top: 10, left: 10, right: 10, bottom: 10},
-  height = 670 - margin.top - margin.bottom,
-  width = 1050 - margin.left - margin.right;
+var margin = { top: 10, left: 10, right: 10, bottom: 10},
+    height = 670 - margin.top - margin.bottom,
+    width = 1050 - margin.left - margin.right;
 
 // setting up the background + margins
-  var svg = d3.select('body')
-    .append("svg")
-    .attr("height", height + margin.top + margin.bottom)
-    .attr("width", width + margin.left + margin.right)
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+var svg = d3.select('body')
+            .append("svg")
+            .attr("height", height + margin.top + margin.bottom)
+            .attr("width", width + margin.left + margin.right)
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 //setting up the map
 var g = svg.append('g');
 
 var projection = d3.geoMercator()
-   .scale(390)
-   .rotate([0, 0])
-   .center([15, 27])
-   .translate([width/2, height/2]);
+                   .scale(390)
+                   .rotate([0, 0])
+                   .center([15, 27])
+                   .translate([width/2, height/2]);
 
 var geoPath = d3.geoPath()
-    .projection(projection);
+                .projection(projection);
 
 g.selectAll('path')
   .data(worldmap_json.features)
@@ -102,57 +102,57 @@ var colorMap = {
 
 //origin rectangles: setting variables
 var sel = g.selectAll("origSquares")
-.data(data93);
+  .data(data93);
 
 sel 
-.exit()
-.remove();
+  .exit()
+  .remove();
 
 sel
-.enter()
-.append("rect")
-.attr("class","squares");
+  .enter()
+  .append("rect")
+  .attr("class","squares");
 
 sel
-.attr("transform", function(d) {
-  return "translate(" + projection([
-    d.origLong,
-    d.origLat
-  ]) + ")";
-})
-.attr("width", 3)
-.attr("height", 3)
-.attr('stroke-width', 0)
-.attr('fill', 'black')
-.on("click", function(d) {
-  originTooltip.transition()
-    .style('opacity', .8)
-    .text(d.origCountry)
-    .style('left', (d3.event.pageX - 50) + 'px')
-    .style('top', (d3.event.pageY - 0) + 'px')
-    .duration(0);
-})
+  .attr("transform", function(d) {
+    return "translate(" + projection([
+      d.origLong,
+      d.origLat
+    ]) + ")";
+  })
+  .attr("width", 3)
+  .attr("height", 3)
+  .attr('stroke-width', 0)
+  .attr('fill', 'black')
+  .on("click", function(d) {
+    originTooltip.transition()
+      .style('opacity', .8)
+      .text(d.origCountry)
+      .style('left', (d3.event.pageX - 50) + 'px')
+      .style('top', (d3.event.pageY - 0) + 'px')
+      .duration(0);
+  })
 
 //end circles: setting variables
 var sel2 = g.selectAll("endCircles")
-.data(data93.sort(function(a,b){ return b.dead - a.dead}));
+  .data(data93.sort(function(a,b){ return b.dead - a.dead}));
 
 sel2
-.exit()
-.remove();
+  .exit()
+  .remove();
 
 sel2
-.enter()
-.append("circle")
-.attr("class","circles");
+  .enter()
+  .append("circle")
+  .attr("class","circles");
 
 sel2
-.attr("transform", function(d) {
-  return "translate(" + projection([
-    d.endLong,
-    d.endLat
-  ]) + ")";
-  })
+  .attr("transform", function(d) {
+    return "translate(" + projection([
+        d.endLong,
+        d.endLat
+      ]) + ")";
+    })
    // setting radius based on sqrt of # dead
   .attr("r", function(d){return Math.sqrt(d.dead)*4; })
   // changing color based on cause (code folded)
@@ -178,6 +178,32 @@ sel2
 
 function updateMap(data) {
   console.log({ data })
+  // var countries = {};
+  // data.forEach(m => {
+  //   if (!countries[m.origCountry]) {
+  //     countries[m.origCountry] = {
+  //       0: m.origLong,
+  //       1: m.origLat,
+  //       arcs: {
+  //         type: "MultiLineString",
+  //         coordinates: []
+  //       },
+  //       ...m,
+  //     };
+  //   }
+  //   if (!countries[m.endCountry]) {
+  //     countries[m.endCountry] = {
+  //       0: m.endLong,
+  //       1: m.endLat,
+  //       arcs: {
+  //         type: "MultiLineString",
+  //         coordinates: []
+  //       },
+  //       ...m,
+  //     };
+  //   }
+  // });
+  // console.log({ countries });
   sel = g.selectAll(".squares")
     .data(data);
 
@@ -205,11 +231,70 @@ function updateMap(data) {
     .attr('stroke-width', 0)
     .attr('fill', 'black')
     .on("click", function(d) {
+      // var dataByOriginCountry = d3.map(data, function(d) { return d.origCountry; });
       var migrantsWithSameOrigin = data.filter(function(migrant) {
         return migrant.origCountry === d.origCountry;
       });
       console.log({ d })
+      // console.log({ dataByOriginCountry })
       console.log({ migrantsWithSameOrigin })
+      // Following along from https://stackoverflow.com/questions/39982729/drawing-connecting-lines-great-arcs-on-a-d3-symbol-map/39988387
+      //
+      // While reading in the migration information create empty MultiLineString objects for every origin and destination:
+      migrantsWithSameOrigin.forEach(function(m) {
+        var source = countries[m.origCountry];
+        var target = countries[m.endCountry];
+        console.log({ "m.origCountry": m.origCountry })
+        console.log({ "m.endCountry": m.endCountry })
+        console.log({ source });
+        console.log({ target });
+        source.arcs.coordinates.push([source, target]);
+        target.arcs.coordinates.push([target, source]);
+        // var origin = [+m.origLong, +m.origLat]
+        // var end = [+m.endLong, +m.endLat]
+        // // m[0] = +m.endLong;
+        // // m[1] = +m.endLat;
+        // // m.arcs = {type: "MultiLineString", coordinates: []};
+        // origin.arcs = {type: "MultiLineString", coordinates: []};
+        // end.arcs = {type: "MultiLineString", coordinates: []};
+        // locations.push(origin);
+        // locations.push(end);
+      })
+      console.log({ countries })
+
+      // flights.forEach(function(flight) {
+      //   var source = airportByIata.get(flight.origin),
+      //       target = airportByIata.get(flight.destination);
+      //   source.arcs.coordinates.push([source, target]);
+      //   target.arcs.coordinates.push([target, source]);
+      // });
+
+      // function typeAirport(d) {
+      //   d[0] = +d.longitude;
+      //   d[1] = +d.latitude;
+      //   d.arcs = {type: "MultiLineString", coordinates: []};
+      //   return d;
+      // }
+  
+
+      // endLat: "35.888361"
+      // endLong: "-5.304138"
+      // origCountry: "Maghreb"
+      // origLat: "33.38367245"
+      // origLong: "44.37339343"
+      
+      // var dataByOrigin = d3.map(data, function(d) { return d.origCountry; });
+      // console.log({ dataByOrigin })
+
+      // migrantsWithSameOrigin.forEach(function(m) {
+      // //   // var origin = [m.origLat, m.origLong];
+      // //   // var dest = [m.endLat, m.endLong];
+      //   var source = dataByOrigin.get(m.origCountry),
+      //       target = dataByOrigin.get(m.endCountry);
+      //   source.arcs.coordinates.push([source, target]);
+      //   target.arcs.coordinates.push([target, source]);
+      // });
+
       originTooltip.transition()
         .style('opacity', .8)
         .text(d.origCountry)
