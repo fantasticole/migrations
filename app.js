@@ -230,32 +230,12 @@ function updateMap(data) {
   });
   // this gets all of the values in allLocs as an array
   var locations = Object.values(allLocs);
-  // this gets all of the keys from the allLocs object
-  // e.g. "21.7587, 4.0383" and returns a list of all
-  // of the locations as objects.
-  // var locations = Object.keys(allLocs).map(l => {
-  //   // split the coordinates back into longitude and latitude
-  //   var coords = l.split(", ");
-  //   return {
-  //     0: coords[0], // longitude
-  //     1: coords[1], // latitude
-  //     arcs: {
-  //       type: "MultiLineString",
-  //       coordinates: [],
-  //     },
-  //     // get the corresponding value for key `l`, which is the country
-  //     // that we set above in the forEach function.
-  //     country: allLocs[l],
-  //     // store the coordinates so we can index them
-  //     coords: l,
-  //   };
-  // });
 
-  // this stores all of the 
-  // var dataByCoords = d3.map(locations, function(d) { return d.coords; });
+  // this stores all of the locations in a d3 map
+  var dataByCoords = d3.map(locations, function(d) { return d.coords; });
   console.log({ allLocs });
   console.log({ locations });
-  // console.log({ dataByCoords });
+  console.log({ dataByCoords });
 
   svg.append("path")
     .datum({type: "MultiPoint", coordinates: locations})
@@ -289,53 +269,48 @@ function updateMap(data) {
     .attr('stroke-width', 0)
     .attr('fill', 'black')
     .on("click", function(d) {
-      svg.selectAll(".migration.active")
-        .attr("class", "migration");
+      // get all prevous paths
+      var previousPaths = locations
+        .filter(function(d) { return d.arcs.coordinates.length; });
+      // reset them
+      previousPaths.forEach(function(path) { path.arcs.coordinates = []; });
 
+      // remove them
+      var oldArcs = svg.selectAll(".migration-arc");
+      console.log({ oldArcs })
+
+      oldArcs.remove();
+
+      // get the new migrations
       var migrantsWithSameOrigin = data.filter(function(migrant) {
         return migrant.origCountry === d.origCountry;
       });
 
-      // make a copy of the allLocs object
-      var updatedLocs = [];
-      // var dataByCoords = d3.map(locations, function(d) { return d.coords; });
       console.log({ d })
       console.log({ migrantsWithSameOrigin })
-      var oSource = { ...allLocs[`${d.origLong}, ${d.origLat}`] };
-      var oTarget = { ...allLocs[`${d.endLong}, ${d.endLat}`] };
-      // var oSource = dataByCoords.get(`${d.origLong}, ${d.origLat}`);
-      // var oTarget = dataByCoords.get(`${d.endLong}, ${d.endLat}`);
+      var oSource = dataByCoords.get(`${d.origLong}, ${d.origLat}`);
+      var oTarget = dataByCoords.get(`${d.endLong}, ${d.endLat}`);
       oSource.arcs.coordinates.push([oSource, oTarget]);
       oTarget.arcs.coordinates.push([oTarget, oSource]);
-      updatedLocs.push(oSource);
-      updatedLocs.push(oTarget);
 
       migrantsWithSameOrigin.forEach(function(path) {
-        var eSource = { ...allLocs[`${path.origLong}, ${path.origLat}`] };
-        var eTarget = { ...allLocs[`${path.endLong}, ${path.endLat}`] };
-        // var eSource = dataByCoords.get(`${path.origLong}, ${path.origLat}`);
-        // var eTarget = dataByCoords.get(`${path.endLong}, ${path.endLat}`);
+        var eSource = dataByCoords.get(`${path.origLong}, ${path.origLat}`);
+        var eTarget = dataByCoords.get(`${path.endLong}, ${path.endLat}`);
         eSource.arcs.coordinates.push([eSource, eTarget]);
         eTarget.arcs.coordinates.push([eTarget, eSource]);
-        updatedLocs.push(eSource);
-        updatedLocs.push(eTarget);
       })
 
-      // var locs = locations
-      // var locs = Object.values(updatedLocs)
-      //   .filter(function(d) { return d.arcs.coordinates.length; });
-      // console.log({ locs })
-      console.log({ updatedLocs })
+      var locs = locations
+        .filter(function(d) { return d.arcs.coordinates.length; });
+      console.log({ locs })
 
       svg.append("path")
-        // .datum({type: "MultiPoint", coordinates: locs})
-        .datum({type: "MultiPoint", coordinates: updatedLocs})
+        .datum({type: "MultiPoint", coordinates: locs})
         .attr("class", "migration-dots")
         .attr("d", geoPath);
 
       var loc = svg.selectAll(".migration")
-        // .data(locs);
-        .data(updatedLocs);
+        .data(locs);
 
       loc
         .exit()
@@ -344,7 +319,7 @@ function updateMap(data) {
       loc
         .enter()
         .append("g")
-        .attr("class", "migration active");
+        .attr("class", "migration");
 
       loc.append("path")
         .attr("class", "migration-arc")
