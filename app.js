@@ -20,6 +20,8 @@ var projection = d3.geoMercator()
                    .center([15, 27])
                    .translate([width/2, height/2]);
 
+// This moves the black squares over the black dots,
+// they were offset before
 var squareProjection = d3.geoMercator()
                    .scale(390)
                    .rotate([0, 0])
@@ -385,7 +387,6 @@ function updateMap(data) {
       endTooltip.transition()
         .style('font-size', 0.55)
         .style('opacity', .8)
-        .style("display", null)
         .style('background', 'white')
         .text(d.dead + " died in " + d.endCity + ", " + d.endCountry + ", after " + d.cause + ". They came from " + d.origCountry + ".")
         .style('left', (d3.event.pageX - 100) + 'px')
@@ -395,7 +396,7 @@ function updateMap(data) {
     })
     .on("mouseout",function(d) {
       endTooltip.transition()
-        .style("display", "none")
+        .style("opacity", 0)
         .duration(0);
     });
 };
