@@ -180,29 +180,82 @@ sel2
 function updateMap(data) {
   console.log({ data })
   var allLocs = {};
-  data.forEach(migration => {
+  // Following along from https://stackoverflow.com/questions/39982729/drawing-connecting-lines-great-arcs-on-a-d3-symbol-map/39988387
+  //
+  // While reading in the migration information, create empty MultiLineString objects for every origin and destination:
+  data.forEach(function(migration) {
+    // this creates a string like "21.7587, 4.0383"
     var origin = `${migration.origLong}, ${migration.origLat}`;
-    var end = `${migration.endLong}, ${migration.endLat}`;
-    allLocs[origin] = migration.origCountry;
-    allLocs[end] = migration.endCountry;
-  });
-  var locations = Object.keys(allLocs).map(l => {
-    var coords = l.split(", ");
-    return {
-      0: coords[0],
-      1: coords[1],
+    var dest = `${migration.endLong}, ${migration.endLat}`;
+    // and this adds that information to the allLocs object
+    allLocs[origin] = {
+      0: migration.origLong,
+      1: migration.origLat,
       arcs: {
         type: "MultiLineString",
-        coordinates: []
+        coordinates: [],
       },
-      country: allLocs[l],
-      coords: l,
+      // get the corresponding value for key `l`, which is the country
+      // that we set above in the forEach function.
+      country: migration.origCountry,
+      // store the coordinates so we can index them
+      coords: origin,
+    };
+    // allLocs looks like this now:
+    // {
+    //   "21.7587, 4.0383": {
+    //     0: "21.7587",
+    //     1: "4.0383",
+    //     arcs: {
+    //       type: "MultiLineString",
+    //       coordinates: [],
+    //     },
+    //     country: "Zaire, Angola, Lebanon, and Togo",
+    //     coords: "21.7587, 4.0383",
+    //   },
+    // }
+    allLocs[dest] = {
+      0: migration.endLong,
+      1: migration.endLat,
+      arcs: {
+        type: "MultiLineString",
+        coordinates: [],
+      },
+      // get the corresponding value for key `l`, which is the country
+      // that we set above in the forEach function.
+      country: migration.origCountry,
+      // store the coordinates so we can index them
+      coords: dest,
     };
   });
-  var dataByCoords = d3.map(locations, function(d) { return d.coords; });
+  // this gets all of the values in allLocs as an array
+  var locations = Object.values(allLocs);
+  // this gets all of the keys from the allLocs object
+  // e.g. "21.7587, 4.0383" and returns a list of all
+  // of the locations as objects.
+  // var locations = Object.keys(allLocs).map(l => {
+  //   // split the coordinates back into longitude and latitude
+  //   var coords = l.split(", ");
+  //   return {
+  //     0: coords[0], // longitude
+  //     1: coords[1], // latitude
+  //     arcs: {
+  //       type: "MultiLineString",
+  //       coordinates: [],
+  //     },
+  //     // get the corresponding value for key `l`, which is the country
+  //     // that we set above in the forEach function.
+  //     country: allLocs[l],
+  //     // store the coordinates so we can index them
+  //     coords: l,
+  //   };
+  // });
+
+  // this stores all of the 
+  // var dataByCoords = d3.map(locations, function(d) { return d.coords; });
   console.log({ allLocs });
   console.log({ locations });
-  console.log({ dataByCoords });
+  // console.log({ dataByCoords });
 
   svg.append("path")
     .datum({type: "MultiPoint", coordinates: locations})
@@ -236,39 +289,62 @@ function updateMap(data) {
     .attr('stroke-width', 0)
     .attr('fill', 'black')
     .on("click", function(d) {
+      svg.selectAll(".migration.active")
+        .attr("class", "migration");
+
       var migrantsWithSameOrigin = data.filter(function(migrant) {
         return migrant.origCountry === d.origCountry;
       });
+
+      // make a copy of the allLocs object
+      var updatedLocs = [];
+      // var dataByCoords = d3.map(locations, function(d) { return d.coords; });
       console.log({ d })
       console.log({ migrantsWithSameOrigin })
-      // Following along from https://stackoverflow.com/questions/39982729/drawing-connecting-lines-great-arcs-on-a-d3-symbol-map/39988387
-      //
-      // While reading in the migration information create empty MultiLineString objects for every origin and destination:
-      var oSource = dataByCoords.get(`${d.origLong}, ${d.origLat}`);
-      var oTarget = dataByCoords.get(`${d.endLong}, ${d.endLat}`);
+      var oSource = { ...allLocs[`${d.origLong}, ${d.origLat}`] };
+      var oTarget = { ...allLocs[`${d.endLong}, ${d.endLat}`] };
+      // var oSource = dataByCoords.get(`${d.origLong}, ${d.origLat}`);
+      // var oTarget = dataByCoords.get(`${d.endLong}, ${d.endLat}`);
       oSource.arcs.coordinates.push([oSource, oTarget]);
       oTarget.arcs.coordinates.push([oTarget, oSource]);
+      updatedLocs.push(oSource);
+      updatedLocs.push(oTarget);
 
       migrantsWithSameOrigin.forEach(function(path) {
-        var eSource = dataByCoords.get(`${path.origLong}, ${path.origLat}`);
-        var eTarget = dataByCoords.get(`${path.endLong}, ${path.endLat}`);
+        var eSource = { ...allLocs[`${path.origLong}, ${path.origLat}`] };
+        var eTarget = { ...allLocs[`${path.endLong}, ${path.endLat}`] };
+        // var eSource = dataByCoords.get(`${path.origLong}, ${path.origLat}`);
+        // var eTarget = dataByCoords.get(`${path.endLong}, ${path.endLat}`);
         eSource.arcs.coordinates.push([eSource, eTarget]);
         eTarget.arcs.coordinates.push([eTarget, eSource]);
+        updatedLocs.push(eSource);
+        updatedLocs.push(eTarget);
       })
 
-      var locs = locations
-        .filter(function(d) { return d.arcs.coordinates.length; });
-      console.log({ locs })
+      // var locs = locations
+      // var locs = Object.values(updatedLocs)
+      //   .filter(function(d) { return d.arcs.coordinates.length; });
+      // console.log({ locs })
+      console.log({ updatedLocs })
 
       svg.append("path")
-        .datum({type: "MultiPoint", coordinates: locs})
+        // .datum({type: "MultiPoint", coordinates: locs})
+        .datum({type: "MultiPoint", coordinates: updatedLocs})
         .attr("class", "migration-dots")
         .attr("d", geoPath);
 
       var loc = svg.selectAll(".migration")
-        .data(locs)
-        .enter().append("g")
-          .attr("class", "migration");
+        // .data(locs);
+        .data(updatedLocs);
+
+      loc
+        .exit()
+        .remove();
+
+      loc
+        .enter()
+        .append("g")
+        .attr("class", "migration active");
 
       loc.append("path")
         .attr("class", "migration-arc")
