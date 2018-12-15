@@ -185,7 +185,18 @@ sel2
        .duration(0);
   });
 
+function clearMap() {
+  // hide tooltips
+  d3.selectAll(".tooltip").style('opacity', 0);
+  // remove migration elements
+  svg.selectAll(".migration").remove();
+  svg.selectAll(".migration-spots").remove();
+  svg.selectAll(".migration-arc").remove();
+  svg.selectAll(".migration-dots").remove();
+}
+
 function updateMap(data) {
+  clearMap();
   console.log({ data })
   var allLocs = {};
   // Following along from https://stackoverflow.com/questions/39982729/drawing-connecting-lines-great-arcs-on-a-d3-symbol-map/39988387
