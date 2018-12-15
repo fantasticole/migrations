@@ -233,9 +233,9 @@ function updateMap(data) {
 
   // this stores all of the locations in a d3 map
   var dataByCoords = d3.map(locations, function(d) { return d.coords; });
-  console.log({ allLocs });
-  console.log({ locations });
-  console.log({ dataByCoords });
+  // console.log({ allLocs });
+  // console.log({ locations });
+  // console.log({ dataByCoords });
 
   svg.append("path")
     .datum({type: "MultiPoint", coordinates: locations})
@@ -278,6 +278,7 @@ function updateMap(data) {
 
       // remove them
       svg.selectAll(".migration-arc").remove();
+      svg.selectAll(".migration-dots").remove();
 
       // get the new migrations
       var migrantsWithSameOrigin = data.filter(function(migrant) {

@@ -116,14 +116,12 @@ svg {
   pointer-events: none;
 }
 
-.migration-arc {
+.migration-arc,
+/*.migration-dots,*/
+.migration-spots {
   fill: none;
 }
 
 .migration .migration-arc {
-  stroke: #f00;
-}
-
-.migration-spots {
-  fill: none;
+  stroke: red;
 }
