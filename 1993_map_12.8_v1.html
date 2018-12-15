@@ -100,119 +100,121 @@ var tooltip = d3.select("body").append("div")
                 .style('padding', '0 10px');
 
 // data (var data93) (code folded)
-var data93 = [{year:"1993",origCountry:"Yugoslavia",dead:"1",origLat:"44.816667",origLong:"20.45",endCity:"unknown",endCountry:"German-Austrian-Czech border",endLat:"48.771516",endLong:"13.839493",cause:"an unknown cause"},{year:"1993",origCountry:"Iran",dead:"1",origLat:"32.9407495",origLong:"52.9471344",endCity:"Tehran",endCountry:"Iran",endLat:"35.700618",endLong:"51.401379",cause:"an unknown cause"},{year:"1993",origCountry:"Mozambique",dead:"1",origLat:"-19.302233",origLong:"34.9144977",endCity:"Dresden",endCountry:"Germany",endLat:"51.0493286",endLong:"13.7381437",cause:"a fire"},{year:"1993",origCountry:"unknown",dead:"2",origLat:"0",origLong:"0",endCity:"Biberach",endCountry:"Germany",endLat:"48.6070436",endLong:"8.2104482",cause:"a jump"},{year:"1993",origCountry:"Turkey",dead:"1",origLat:"38.9597594",origLong:"34.9249653",endCity:"Kaltenkirchen",endCountry:"Germany",endLat:"53.8371714",endLong:"9.9614889",cause:"a fire"},{year:"1993",origCountry:"Sudan",dead:"1",origLat:"14.5844444",origLong:"29.4917691",endCity:"Herne",endCountry:"Germany",endLat:"51.5380394",endLong:"7.219985",cause:"suicide"},{year:"1993",origCountry:"Lebanon",dead:"1",origLat:"33.8750629",origLong:"35.843409",endCity:"Emstek",endCountry:"Germany",endLat:"52.8339613",endLong:"8.1549499",cause:"a fire"},{year:"1993",origCountry:"Romania",dead:"2",origLat:"45.9852129",origLong:"24.6859225",endCity:"Baden Wurttemberg",endCountry:"Germany",endLat:"48.6296972",endLong:"9.1949534",cause:"a fire"},{year:"1993",origCountry:"Kenya",dead:"1",origLat:"-0.8999695",origLong:"11.6899699",endCity:"Munich",endCountry:"Germany",endLat:"48.1371079",endLong:"11.5753822",cause:"hit by a vehicle"},{year:"1993",origCountry:"Gabon",dead:"1",origLat:"1.4419683",origLong:"38.4313975",endCity:"Bois d'Arcy",endCountry:"France",endLat:"48.799856",endLong:"2.023607",cause:"medical neglect"},{year:"1993",origCountry:"Eritrea",dead:"3",origLat:"15.9500319",origLong:"37.9999668",endCity:"Hesse",endCountry:"Germany",endLat:"50.6118537",endLong:"9.1909725",cause:"a fire"},{year:"1993",origCountry:"Jamaica",dead:"1",origLat:"18.1850507",origLong:"-77.3947693",endCity:"London",endCountry:"England",endLat:"51.5073219",endLong:"-0.1276474",cause:"a beating"},{year:"1993",origCountry:"Liberia",dead:"1",origLat:"5.7499721",origLong:"-9.3658524",endCity:"Feldkirch",endCountry:"Austria",endLat:"47.2375671",endLong:"9.5981724",cause:"hypothermia"},{year:"1993",origCountry:"Yugoslavia",dead:"1",origLat:"44.816667",origLong:"20.45",endCity:"Bad Waldsee",endCountry:"Germany",endLat:"47.9209556",endLong:"9.7542772",cause:"asphyxiation"},{year:"1993",origCountry:"Albania",dead:"11",origLat:"41.000028",origLong:"19.9999619",endCity:"the Strait of Otranto",endCountry:"Italy",endLat:"40.2406193",endLong:"18.9637757",cause:"drowning"},{year:"1993",origCountry:"Ethiopia",dead:"1",origLat:"10.2116702",origLong:"38.6521203",endCity:"Berlin",endCountry:"Germany",endLat:"52.5170365",endLong:"13.3888599",cause:"suicide"},{year:"1993",origCountry:"Angola",dead:"1",origLat:"-11.8775768",origLong:"17.5691241",endCity:"Paris",endCountry:"France",endLat:"48.8566101",endLong:"2.3514992",cause:"drowning"},{year:"1993",origCountry:"unknown",dead:"3",origLat:"0",origLong:"0",endCity:"the Oder River",endCountry:"Polish-German border",endLat:"52.338041",endLong:"14.563058",cause:"drowning"},{year:"1993",origCountry:"Macedonia",dead:"1",origLat:"41.6171214",origLong:"21.7168387",endCity:"Rhine.River",endCountry:"Austrian-Swiss border",endLat:"47.454965",endLong:"9.666184",cause:"drowning"},{year:"1993",origCountry:"Zaire",dead:"1",origLat:"-6.6925131",origLong:"13.5293029",endCity:"Paris",endCountry:"France",endLat:"48.8566101",endLong:"2.3514992",cause:"drowning"},{year:"1993",origCountry:"Romania",dead:"1",origLat:"45.9852129",origLong:"24.6859225",endCity:"Schwandorf",endCountry:"Germany",endLat:"49.3261854",endLong:"12.1092708",cause:"hypothermia"},{year:"1993",origCountry:"Albania",dead:"2",origLat:"41.000028",origLong:"19.9999619",endCity:"Balerna",endCountry:"Switzerland",endLat:"45.8491908",endLong:"9.0070811",cause:"hit by a vehicle"},{year:"1993",origCountry:"Albania",dead:"1",origLat:"33.7680065",origLong:"66.2385139",endCity:"Coldrerio",endCountry:"Switzerland",endLat:"45.8538378",endLong:"8.9871005",cause:"hit by a vehicle"},{year:"1993",origCountry:"Afghanistan",dead:"1",origLat:"41.000028",origLong:"19.9999619",endCity:"unknown",endCountry:"Turkey",endLat:"38.9597594",endLong:"34.9249653",cause:"a jump"},{year:"1993",origCountry:"Kurdistan",dead:"1",origLat:"35.672803",origLong:"47.0124376",endCity:"unknown",endCountry:"Turkey",endLat:"38.9597594",endLong:"34.9249653",cause:"an unknown cause"},{year:"1993",origCountry:"Kurdistan",dead:"1",origLat:"35.672803",origLong:"47.0124376",endCity:"unknown",endCountry:"Turkey",endLat:"38.9597594",endLong:"34.9249653",cause:"a shooting"},{year:"1993",origCountry:"Kurdistan",dead:"1",origLat:"35.672803",origLong:"47.0124376",endCity:"Dulmen",endCountry:"Germany",endLat:"51.8283677",endLong:"7.2791406",cause:"a shooting"},{year:"1993",origCountry:"Romania",dead:"1",origLat:"45.9852129",origLong:"24.6859225",endCity:"Saxony-Anhalt",endCountry:"Germany",endLat:"51.908526",endLong:"11.4939134",cause:"a shooting"},{year:"1993",origCountry:"Zaire",dead:"1",origLat:"-6.6925131",origLong:"13.5293029",endCity:"Paris",endCountry:"France",endLat:"48.8566101",endLong:"2.3514992",cause:"a shooting"},{year:"1993",origCountry:"Poland",dead:"1",origLat:"52.0977181",origLong:"19.0258159",endCity:"Frankfurt",endCountry:"Germany",endLat:"50.1106444",endLong:"8.6820917",cause:"suffocation"},{year:"1993",origCountry:"Sri Lanka",dead:"5",origLat:"7.878",origLong:"80.70382459",endCity:"Vienna",endCountry:"Austria",endLat:"48.2083537",endLong:"16.3725042",cause:"suffocation"},{year:"1993",origCountry:"Turkey",dead:"1",origLat:"38.9597594",origLong:"34.9249653",endCity:"Dinslaken",endCountry:"Germany",endLat:"51.5623618",endLong:"6.7345106",cause:"suicide"},{year:"1993",origCountry:"Yugoslavia",dead:"1",origLat:"44.816667",origLong:"20.45",endCity:"Hellevoetsluis",endCountry:"Netherlands",endLat:"51.8433469",endLong:"4.121302772",cause:"suicide"},{year:"1993",origCountry:"Zaire",dead:"1",origLat:"-6.6925131",origLong:"13.5293029",endCity:"Harmondsworth",endCountry:"England",endLat:"51.4889317",endLong:"-0.4755435",cause:"suicide"},{year:"1993",origCountry:"Liberia",dead:"1",origLat:"5.7499721",origLong:"-9.3658524",endCity:"Regensburg",endCountry:"Germany",endLat:"49.0195333",endLong:"12.0974869",cause:"suicide"},{year:"1993",origCountry:"Angola",dead:"1",origLat:"-11.8775768",origLong:"17.5691241",endCity:"Trier",endCountry:"Germany",endLat:"49.7596208",endLong:"6.6441878",cause:"suicide"},{year:"1993",origCountry:"Senegal",dead:"1",origLat:"14.4750607",origLong:"-14.4529612",endCity:"EislIngen",endCountry:"Germany",endLat:"48.71357955",endLong:"9.731589402",cause:"suicide"},{year:"1993",origCountry:"Ethiopia",dead:"1",origLat:"10.2116702",origLong:"38.6521203",endCity:"Diedersdorf",endCountry:"Germany",endLat:"52.34634765",endLong:"13.36008071",cause:"suicide"},{year:"1993",origCountry:"Ghana",dead:"1",origLat:"8.0300284",origLong:"-1.0800271",endCity:"Munich",endCountry:"Germany",endLat:"48.1371079",endLong:"11.5753822",cause:"suicide"},{year:"1993",origCountry:"Palestine",dead:"1",origLat:"31.9522",origLong:"35.2332",endCity:"Berlin",endCountry:"Germany",endLat:"52.5170365",endLong:"13.3888599",cause:"suicide"},{year:"1993",origCountry:"Turkey",dead:"1",origLat:"38.9597594",origLong:"34.9249653",endCity:"Croyden",endCountry:"England",endLat:"50.8658648",endLong:"-4.269484",cause:"suicide"}];
+var data93 = [
+  {
+    year:"1993",origCountry:"Yugoslavia",dead:"1",origLat:"44.816667",origLong:"20.45",endCity:"unknown",endCountry:"German-Austrian-Czech border",endLat:"48.771516",endLong:"13.839493",cause:"an unknown cause"},{year:"1993",origCountry:"Iran",dead:"1",origLat:"32.9407495",origLong:"52.9471344",endCity:"Tehran",endCountry:"Iran",endLat:"35.700618",endLong:"51.401379",cause:"an unknown cause"},{year:"1993",origCountry:"Mozambique",dead:"1",origLat:"-19.302233",origLong:"34.9144977",endCity:"Dresden",endCountry:"Germany",endLat:"51.0493286",endLong:"13.7381437",cause:"a fire"},{year:"1993",origCountry:"unknown",dead:"2",origLat:"0",origLong:"0",endCity:"Biberach",endCountry:"Germany",endLat:"48.6070436",endLong:"8.2104482",cause:"a jump"},{year:"1993",origCountry:"Turkey",dead:"1",origLat:"38.9597594",origLong:"34.9249653",endCity:"Kaltenkirchen",endCountry:"Germany",endLat:"53.8371714",endLong:"9.9614889",cause:"a fire"},{year:"1993",origCountry:"Sudan",dead:"1",origLat:"14.5844444",origLong:"29.4917691",endCity:"Herne",endCountry:"Germany",endLat:"51.5380394",endLong:"7.219985",cause:"suicide"},{year:"1993",origCountry:"Lebanon",dead:"1",origLat:"33.8750629",origLong:"35.843409",endCity:"Emstek",endCountry:"Germany",endLat:"52.8339613",endLong:"8.1549499",cause:"a fire"},{year:"1993",origCountry:"Romania",dead:"2",origLat:"45.9852129",origLong:"24.6859225",endCity:"Baden Wurttemberg",endCountry:"Germany",endLat:"48.6296972",endLong:"9.1949534",cause:"a fire"},{year:"1993",origCountry:"Kenya",dead:"1",origLat:"-0.8999695",origLong:"11.6899699",endCity:"Munich",endCountry:"Germany",endLat:"48.1371079",endLong:"11.5753822",cause:"hit by a vehicle"},{year:"1993",origCountry:"Gabon",dead:"1",origLat:"1.4419683",origLong:"38.4313975",endCity:"Bois d'Arcy",endCountry:"France",endLat:"48.799856",endLong:"2.023607",cause:"medical neglect"},{year:"1993",origCountry:"Eritrea",dead:"3",origLat:"15.9500319",origLong:"37.9999668",endCity:"Hesse",endCountry:"Germany",endLat:"50.6118537",endLong:"9.1909725",cause:"a fire"},{year:"1993",origCountry:"Jamaica",dead:"1",origLat:"18.1850507",origLong:"-77.3947693",endCity:"London",endCountry:"England",endLat:"51.5073219",endLong:"-0.1276474",cause:"a beating"},{year:"1993",origCountry:"Liberia",dead:"1",origLat:"5.7499721",origLong:"-9.3658524",endCity:"Feldkirch",endCountry:"Austria",endLat:"47.2375671",endLong:"9.5981724",cause:"hypothermia"},{year:"1993",origCountry:"Yugoslavia",dead:"1",origLat:"44.816667",origLong:"20.45",endCity:"Bad Waldsee",endCountry:"Germany",endLat:"47.9209556",endLong:"9.7542772",cause:"asphyxiation"},{year:"1993",origCountry:"Albania",dead:"11",origLat:"41.000028",origLong:"19.9999619",endCity:"the Strait of Otranto",endCountry:"Italy",endLat:"40.2406193",endLong:"18.9637757",cause:"drowning"},{year:"1993",origCountry:"Ethiopia",dead:"1",origLat:"10.2116702",origLong:"38.6521203",endCity:"Berlin",endCountry:"Germany",endLat:"52.5170365",endLong:"13.3888599",cause:"suicide"},{year:"1993",origCountry:"Angola",dead:"1",origLat:"-11.8775768",origLong:"17.5691241",endCity:"Paris",endCountry:"France",endLat:"48.8566101",endLong:"2.3514992",cause:"drowning"},{year:"1993",origCountry:"unknown",dead:"3",origLat:"0",origLong:"0",endCity:"the Oder River",endCountry:"Polish-German border",endLat:"52.338041",endLong:"14.563058",cause:"drowning"},{year:"1993",origCountry:"Macedonia",dead:"1",origLat:"41.6171214",origLong:"21.7168387",endCity:"Rhine.River",endCountry:"Austrian-Swiss border",endLat:"47.454965",endLong:"9.666184",cause:"drowning"},{year:"1993",origCountry:"Zaire",dead:"1",origLat:"-6.6925131",origLong:"13.5293029",endCity:"Paris",endCountry:"France",endLat:"48.8566101",endLong:"2.3514992",cause:"drowning"},{year:"1993",origCountry:"Romania",dead:"1",origLat:"45.9852129",origLong:"24.6859225",endCity:"Schwandorf",endCountry:"Germany",endLat:"49.3261854",endLong:"12.1092708",cause:"hypothermia"},{year:"1993",origCountry:"Albania",dead:"2",origLat:"41.000028",origLong:"19.9999619",endCity:"Balerna",endCountry:"Switzerland",endLat:"45.8491908",endLong:"9.0070811",cause:"hit by a vehicle"},{year:"1993",origCountry:"Albania",dead:"1",origLat:"33.7680065",origLong:"66.2385139",endCity:"Coldrerio",endCountry:"Switzerland",endLat:"45.8538378",endLong:"8.9871005",cause:"hit by a vehicle"},{year:"1993",origCountry:"Afghanistan",dead:"1",origLat:"41.000028",origLong:"19.9999619",endCity:"unknown",endCountry:"Turkey",endLat:"38.9597594",endLong:"34.9249653",cause:"a jump"},{year:"1993",origCountry:"Kurdistan",dead:"1",origLat:"35.672803",origLong:"47.0124376",endCity:"unknown",endCountry:"Turkey",endLat:"38.9597594",endLong:"34.9249653",cause:"an unknown cause"},{year:"1993",origCountry:"Kurdistan",dead:"1",origLat:"35.672803",origLong:"47.0124376",endCity:"unknown",endCountry:"Turkey",endLat:"38.9597594",endLong:"34.9249653",cause:"a shooting"},{year:"1993",origCountry:"Kurdistan",dead:"1",origLat:"35.672803",origLong:"47.0124376",endCity:"Dulmen",endCountry:"Germany",endLat:"51.8283677",endLong:"7.2791406",cause:"a shooting"},{year:"1993",origCountry:"Romania",dead:"1",origLat:"45.9852129",origLong:"24.6859225",endCity:"Saxony-Anhalt",endCountry:"Germany",endLat:"51.908526",endLong:"11.4939134",cause:"a shooting"},{year:"1993",origCountry:"Zaire",dead:"1",origLat:"-6.6925131",origLong:"13.5293029",endCity:"Paris",endCountry:"France",endLat:"48.8566101",endLong:"2.3514992",cause:"a shooting"},{year:"1993",origCountry:"Poland",dead:"1",origLat:"52.0977181",origLong:"19.0258159",endCity:"Frankfurt",endCountry:"Germany",endLat:"50.1106444",endLong:"8.6820917",cause:"suffocation"},{year:"1993",origCountry:"Sri Lanka",dead:"5",origLat:"7.878",origLong:"80.70382459",endCity:"Vienna",endCountry:"Austria",endLat:"48.2083537",endLong:"16.3725042",cause:"suffocation"},{year:"1993",origCountry:"Turkey",dead:"1",origLat:"38.9597594",origLong:"34.9249653",endCity:"Dinslaken",endCountry:"Germany",endLat:"51.5623618",endLong:"6.7345106",cause:"suicide"},{year:"1993",origCountry:"Yugoslavia",dead:"1",origLat:"44.816667",origLong:"20.45",endCity:"Hellevoetsluis",endCountry:"Netherlands",endLat:"51.8433469",endLong:"4.121302772",cause:"suicide"},{year:"1993",origCountry:"Zaire",dead:"1",origLat:"-6.6925131",origLong:"13.5293029",endCity:"Harmondsworth",endCountry:"England",endLat:"51.4889317",endLong:"-0.4755435",cause:"suicide"},{year:"1993",origCountry:"Liberia",dead:"1",origLat:"5.7499721",origLong:"-9.3658524",endCity:"Regensburg",endCountry:"Germany",endLat:"49.0195333",endLong:"12.0974869",cause:"suicide"},{year:"1993",origCountry:"Angola",dead:"1",origLat:"-11.8775768",origLong:"17.5691241",endCity:"Trier",endCountry:"Germany",endLat:"49.7596208",endLong:"6.6441878",cause:"suicide"},{year:"1993",origCountry:"Senegal",dead:"1",origLat:"14.4750607",origLong:"-14.4529612",endCity:"EislIngen",endCountry:"Germany",endLat:"48.71357955",endLong:"9.731589402",cause:"suicide"},{year:"1993",origCountry:"Ethiopia",dead:"1",origLat:"10.2116702",origLong:"38.6521203",endCity:"Diedersdorf",endCountry:"Germany",endLat:"52.34634765",endLong:"13.36008071",cause:"suicide"},{year:"1993",origCountry:"Ghana",dead:"1",origLat:"8.0300284",origLong:"-1.0800271",endCity:"Munich",endCountry:"Germany",endLat:"48.1371079",endLong:"11.5753822",cause:"suicide"},{year:"1993",origCountry:"Palestine",dead:"1",origLat:"31.9522",origLong:"35.2332",endCity:"Berlin",endCountry:"Germany",endLat:"52.5170365",endLong:"13.3888599",cause:"suicide"},{year:"1993",origCountry:"Turkey",dead:"1",origLat:"38.9597594",origLong:"34.9249653",endCity:"Croyden",endCountry:"England",endLat:"50.8658648",endLong:"-4.269484",cause:"suicide"
+  }
+];
 
 
 //origin circles
 g.selectAll("origCircles")
-              .data(data93)
-              .enter() 
-              .append("rect")
-              .attr("transform", function(d) {
-              return "translate(" + projection
-            ([
-                d.origLong,
-                d.origLat
-              ]) + ")";
-              })
-              .attr("width", 2)
-              .attr("height", 2)
-              .attr('stroke-width', 0)
-              .attr('fill', 'black')
-              // .on("mouseover", function(d) {
-              //   tooltip.transition()
-              //     .style('opacity', .8)
-              //     .style('background', 'white')
-              //     .text(d.origCountry)
-              //     .style('left', (d3.event.pageX - 100) + 'px')
-              //     .style('top', (d3.event.pageY - 30) + 'px')
-              //     .duration(0);
-              // })
-              // .on("mouseout",function(d) {
-              //    tooltip.transition()
-              //      .style("opacity", "0")
-              //      .duration(0);
-              // })
+  .data(data93)
+  .enter() 
+  .append("rect")
+  .attr("transform", function(d) {
+    return "translate(" + projection([
+      d.origLong,
+      d.origLat
+    ]) + ")";
+  })
+  .attr("width", 2)
+  .attr("height", 2)
+  .attr('stroke-width', 0)
+  .attr('fill', 'black')
+  // .on("mouseover", function(d) {
+  //   tooltip.transition()
+  //     .style('opacity', .8)
+  //     .style('background', 'white')
+  //     .text(d.origCountry)
+  //     .style('left', (d3.event.pageX - 100) + 'px')
+  //     .style('top', (d3.event.pageY - 30) + 'px')
+  //     .duration(0);
+  // })
+  // .on("mouseout",function(d) {
+  //    tooltip.transition()
+  //      .style("opacity", "0")
+  //      .duration(0);
+  // })
          
 
 // circles signifying deaths: location, number, cause
 g.selectAll("endCircles") //empty selection
-              .data(data93) //data to bind to selection
-              .enter() // the enter selection holds new elements in the selection
-              .append("circle") // append a circle for each new element
-              // Manage the style of each circle based on its datum:
-              // positioning circles on the map
-              .attr("transform", function(d) {
-              return "translate(" + projection
-            ([
-                d.endLong,
-                d.endLat
-              ]) + ")";
-              })
-               // setting radius based on # dead
-              .attr("r", function(d) { return d.dead*2; })
-              // changing color based on cause (code folded)
-              .text(function(d){return d.cause; })
-              .style('opacity', .6)
-              .attr('fill', function(d) {
-                  if(d.cause === "asphyxiation") {
-                      return "#b07aa0";
-                  } else if (d.cause === "suffocation") {
-                      return "#b07aa0";
-                  } else if (d.cause === "a beating") {
-                      return "#f18e27";
-                  } else if (d.cause === "a shooting") {
-                      return "#f18e27";
-                  } else if (d.cause === "a stabbing") {
-                      return "#f18e27";
-                  } else if (d.cause === "dehydration") {
-                      return "#8eca7d";
-                  } else if (d.cause === "starvation") {
-                      return "#8eca7d"; 
-                  } else if (d.cause === "drowning") {
-                      return "#4e79a7";
-                  } else if (d.cause === "a fall") {
-                      return "#f8bfd1"; 
-                  } else if (d.cause === "a jump") {
-                      return "#f8bfd1"; 
-                  } else if (d.cause === "a fire") {
-                      return "#f1ce63";
-                  } else if (d.cause === "hit by a vehicle") {
-                      return "#79706e";
-                  } else if (d.cause === "vehicle accident") {
-                      return "#79706e";
-                  } else if (d.cause === "hypothermia") {
-                      return "#9fcae7";
-                  } else if (d.cause === "medical neglect") {
-                      return "#408b75";
-                  } else if (d.cause === "illness") {
-                      return "#408b75";
-                  } else if (d.cause === "mine blast") {
-                      return "#b5982f";
-                  } else if (d.cause === "suicide") {
-                      return "#e05759";
-                  } else if (d.cause === "an unknown cause") {
-                      return "#bab0ac";
-                  } else if (d.cause === "other") {
-                      return "#bab0ac";
-                  }
-                  })
-              
-              .on("mouseover", function(d) {
-                tooltip.transition()
-                  .style('font-size', 0.55)
-                  .style('opacity', .8)
-                  .style('background', 'white')
-                  .text(d.dead + " died in " + d.endCity + ", " + d.endCountry + ", after " + d.cause + ". They came from " + d.origCountry + ".")
-                  .style('left', (d3.event.pageX - 100) + 'px')
-                  .style('top', (d3.event.pageY - 30) + 'px')
-                  .duration(0);
-              })
-              .on("mouseout",function(d) {
-                 tooltip.transition()
-                   .style("opacity", "0")
-                   .duration(0);
-              })
+  .data(data93) //data to bind to selection
+  .enter() // the enter selection holds new elements in the selection
+  .append("circle") // append a circle for each new element
+  // Manage the style of each circle based on its datum:
+  // positioning circles on the map
+  .attr("transform", function(d) {
+    return "translate(" + projection([
+      d.endLong,
+      d.endLat
+    ]) + ")";
+  })
+   // setting radius based on # dead
+  .attr("r", function(d) { return d.dead*2; })
+  // changing color based on cause (code folded)
+  .text(function(d){return d.cause; })
+  .style('opacity', .6)
+  .attr('fill', function(d) {
+      if(d.cause === "asphyxiation") {
+          return "#b07aa0";
+      } else if (d.cause === "suffocation") {
+          return "#b07aa0";
+      } else if (d.cause === "a beating") {
+          return "#f18e27";
+      } else if (d.cause === "a shooting") {
+          return "#f18e27";
+      } else if (d.cause === "a stabbing") {
+          return "#f18e27";
+      } else if (d.cause === "dehydration") {
+          return "#8eca7d";
+      } else if (d.cause === "starvation") {
+          return "#8eca7d"; 
+      } else if (d.cause === "drowning") {
+          return "#4e79a7";
+      } else if (d.cause === "a fall") {
+          return "#f8bfd1"; 
+      } else if (d.cause === "a jump") {
+          return "#f8bfd1"; 
+      } else if (d.cause === "a fire") {
+          return "#f1ce63";
+      } else if (d.cause === "hit by a vehicle") {
+          return "#79706e";
+      } else if (d.cause === "vehicle accident") {
+          return "#79706e";
+      } else if (d.cause === "hypothermia") {
+          return "#9fcae7";
+      } else if (d.cause === "medical neglect") {
+          return "#408b75";
+      } else if (d.cause === "illness") {
+          return "#408b75";
+      } else if (d.cause === "mine blast") {
+          return "#b5982f";
+      } else if (d.cause === "suicide") {
+          return "#e05759";
+      } else if (d.cause === "an unknown cause") {
+          return "#bab0ac";
+      } else if (d.cause === "other") {
+          return "#bab0ac";
+      }
+  })
+  
+  .on("mouseover", function(d) {
+    tooltip.transition()
+      .style('font-size', 0.55)
+      .style('opacity', .8)
+      .style('background', 'white')
+      .text(d.dead + " died in " + d.endCity + ", " + d.endCountry + ", after " + d.cause + ". They came from " + d.origCountry + ".")
+      .style('left', (d3.event.pageX - 100) + 'px')
+      .style('top', (d3.event.pageY - 30) + 'px')
+      .duration(0);
+  })
+  .on("mouseout",function(d) {
+     tooltip.transition()
+       .style("opacity", "0")
+       .duration(0);
+  })
 
 // still to fix on tooltips: line breaks; limit by map borders
 // how to prevent circles from overlapping (occlusion?)
