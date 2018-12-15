@@ -116,8 +116,12 @@ svg {
   pointer-events: none;
 }
 
+.migration-dots {
+  /*uncomment to hide black dots*/
+  /*fill: none;*/
+}
+
 .migration-arc,
-/*.migration-dots,*/
 .migration-spots {
   fill: none;
 }

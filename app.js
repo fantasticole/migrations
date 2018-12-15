@@ -20,6 +20,12 @@ var projection = d3.geoMercator()
                    .center([15, 27])
                    .translate([width/2, height/2]);
 
+var squareProjection = d3.geoMercator()
+                   .scale(390)
+                   .rotate([0, 0])
+                   .center([15, 27])
+                   .translate([(width/2) - 5, (height/2) - 5]);
+
 var geoPath = d3.geoPath()
                 .projection(projection)
                 .pointRadius(2.5);
@@ -116,13 +122,15 @@ sel
 
 sel
   .attr("transform", function(d) {
-    return "translate(" + projection([
+    return "translate(" + squareProjection([
       d.origLong,
       d.origLat
     ]) + ")";
   })
-  .attr("width", 3)
-  .attr("height", 3)
+  // .attr("width", 3)
+  // .attr("height", 3)
+  .attr("width", 10)
+  .attr("height", 10)
   .attr('stroke-width', 0)
   .attr('fill', 'black')
   .on("click", function(d) {
@@ -257,15 +265,15 @@ function updateMap(data) {
   sel
     .filter(function(d) {return d.origLong != 0})
     .attr("transform", function(d) {
-      return "translate(" + projection([
+      return "translate(" + squareProjection([
         d.origLong,
         d.origLat
       ]) + ")";
     })
     // .attr("width", 3)
     // .attr("height", 3)
-    .attr("width", 30)
-    .attr("height", 30)
+    .attr("width", 10)
+    .attr("height", 10)
     .attr('stroke-width', 0)
     .attr('fill', 'black')
     .on("click", function(d) {
