@@ -272,27 +272,29 @@ function updateMap(data) {
       // get all prevous paths
       var previousPaths = locations
         .filter(function(d) { return d.arcs.coordinates.length; });
+
       // reset them
       previousPaths.forEach(function(path) { path.arcs.coordinates = []; });
 
       // remove them
-      var oldArcs = svg.selectAll(".migration-arc");
-      console.log({ oldArcs })
-
-      oldArcs.remove();
+      svg.selectAll(".migration-arc").remove();
 
       // get the new migrations
       var migrantsWithSameOrigin = data.filter(function(migrant) {
         return migrant.origCountry === d.origCountry;
       });
 
-      console.log({ d })
-      console.log({ migrantsWithSameOrigin })
+      // console.log({ d })
+      // console.log({ migrantsWithSameOrigin })
+
+      // get the source and target for the current migration and
+      // create arcs for them
       var oSource = dataByCoords.get(`${d.origLong}, ${d.origLat}`);
       var oTarget = dataByCoords.get(`${d.endLong}, ${d.endLat}`);
       oSource.arcs.coordinates.push([oSource, oTarget]);
       oTarget.arcs.coordinates.push([oTarget, oSource]);
 
+      // do the same for the other migrations with the same origin
       migrantsWithSameOrigin.forEach(function(path) {
         var eSource = dataByCoords.get(`${path.origLong}, ${path.origLat}`);
         var eTarget = dataByCoords.get(`${path.endLong}, ${path.endLat}`);
@@ -300,10 +302,11 @@ function updateMap(data) {
         eTarget.arcs.coordinates.push([eTarget, eSource]);
       })
 
+      // get all of the locations that have arcs
       var locs = locations
         .filter(function(d) { return d.arcs.coordinates.length; });
-      console.log({ locs })
 
+      // create paths for those arcs
       svg.append("path")
         .datum({type: "MultiPoint", coordinates: locs})
         .attr("class", "migration-dots")
